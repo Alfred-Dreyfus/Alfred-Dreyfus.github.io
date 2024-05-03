@@ -8,7 +8,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--background-color);
-  font-family: "IBM Plex Serif";
+  font-family: "IBM Plex Serif", sans-serif;
 }
 
 main {
@@ -52,7 +52,7 @@ nav ul li {
 }
 
 nav ul li:not(:last-child)::after {
-  content: " | ";
+  content: " |";
   margin-left: 1rem;
   color: var(--primary-color);
 }
@@ -62,7 +62,7 @@ nav ul li a {
   text-decoration: none;
   font-size: 1.2em;
   text-shadow: 0 0 2px var(--primary-color);
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 nav ul li a:hover {
@@ -102,7 +102,7 @@ section.hero .hero-text {
   padding: 1rem;
   margin: 2rem;
   border-radius: 15px;
-  width: 60ch;
+  width: 40ch;
 }
 
 .hero-text p::before {
@@ -234,21 +234,21 @@ ul.timeline-items .timeline-dot {
   box-shadow: 0 0 25px var(--accent-color);
 }
 
-ul.timeline-date {
+ul.timeline-items .timeline-date {
   display: inline-block;
   font-size: 20px;
   font-weight: 800;
-  margin: 0px 15px 15px 15px;
+  margin: 0 15px 15px 15px;
 }
 
 ul.timeline-items .timeline-content {
   border: 3px solid var(--accent-color);
-  padding: 20px 40px;
+  padding: 10px 40px;
   border-radius: 75px;
   background-color: var(--background-color);
   box-shadow: 0 0 10px var(--accent-color);
   cursor: pointer;
-  transition: all .5s ease;
+  transition: all 0.3s ease;
 }
 
 ul.timeline-items .timeline-content:hover {
@@ -257,13 +257,13 @@ ul.timeline-items .timeline-content:hover {
 }
 
 .timeline-content h3 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
-  margin: 0 0 10px 0;
+  margin: 0 0 5px 0;
 }
 
 .timeline-content p {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 300;
   margin: 0;
 }
@@ -273,7 +273,8 @@ section.projects {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3rem;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 section.projects ul {
@@ -292,29 +293,30 @@ section.projects ul li {
   box-shadow: 4px 4px 10px var(--primary-color);
   flex-shrink: 1;
   flex-basis: 400px;
+  transition: all 0.3s ease;
 }
 
 section.projects ul li img {
   width: 100%;
-  border-radius: 1rem 1rem 0 0 ;
+  border-radius: 1rem 1rem 0 0;
 }
 
 section.projects ul li h4 {
-  margin:.5rem 1rem;
+  margin: 0.5rem 1rem;
   font-size: 1.2em;
 }
 
 section.projects ul li p {
-  margin: 0 0 .5rem 1rem;
+  margin: 0 1rem 0.5rem 1rem;
 }
 
-section.projects ul li button {
+section.projects ul li a {
   display: inline-block;
   text-decoration: none;
   margin-bottom: 1rem;
   margin-left: 0.5rem;
   border-radius: 1rem;
-  padding: 0.8rem;
+  padding: 0.9rem;
   background-color: var(--accent-color);
   font-size: 1.1em;
   font-weight: 700;
@@ -324,22 +326,98 @@ section.projects ul li button {
 }
 
 section.projects ul li:hover {
-  box-shadow: 4px 4px 10px var(--accent-color);
+  box-shadow: 6px 6px 20px var(--accent-color);
   transform: translateY(-1rem) translateX(0.5rem);
 }
 
+/* Media-Queries */
 @media screen and (max-width: 900px) {
+  section.hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+  }
+
+  section.hero .hero-text {
+    font-size: 0.9em;
+    height: 100%;
+    justify-content: end;
+  }
+
+  /* ul.nav#id {
+
+  }
+  let myNavlinkElem = document.querySelector('ul.nav#id') */
+
+  section.hero .hero-text p {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    width: 55ch;
+  }
+
+  section.hero .hero-text h1 {
+    margin: 0;
+  }
+
+  section.hero img {
+    height: 100%;
+  }
+
   section.skills ul {
+    margin-top: 0;
     gap: 1rem;
+    /* transform: scale(0.8); */
   }
   section.skills ul li {
     width: 80%;
+  }
+  section.timeline {
+    padding: 0.6rem;
+    justify-content: end;
   }
   section.timeline h2.timeline-title {
     margin: 0;
   }
   section.timeline ul.timeline-items {
     max-width: fit-content;
-    transform: scale(0.9);
+  }
+  .timeline-content p {
+    max-width: 30vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  ul.timeline-items li:nth-child(odd) .timeline-content {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+
+  /* Project Mobile Section */
+  section.projects ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  section.projects ul li {
+    display: flex;
+    flex-direction: row;
+    max-width: 90%;
+    width: 90%;
+    flex-basis: auto;
+    max-height: 25vh;
+  }
+  section.projects ul li .card-content {
+    display: flex;
+    flex-direction: column;
+  }
+  section.projects ul li img {
+    width: auto;
+    height: 100%;
+    border-radius: 1rem 0 0 1rem;
+  }
+  section.projects ul li .card-content a {
+    margin-top: auto;
+    margin-bottom: 0.3rem;
+    align-self: start;
   }
 }
