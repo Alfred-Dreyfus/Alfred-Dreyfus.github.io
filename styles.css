@@ -309,6 +309,8 @@ section.projects ul li p {
 }
 
 section.projects ul li button {
+  display: inline-block;
+  text-decoration: none;
   margin-bottom: 1rem;
   margin-left: 0.5rem;
   border-radius: 1rem;
@@ -318,4 +320,26 @@ section.projects ul li button {
   font-weight: 700;
   color: white;
   text-shadow: 0 0 4px black;
+  box-shadow: 2px 2px 6px #121212;
+}
+
+section.projects ul li:hover {
+  box-shadow: 4px 4px 10px var(--accent-color);
+  transform: translateY(-1rem) translateX(0.5rem);
+}
+
+@media screen and (max-width: 900px) {
+  section.skills ul {
+    gap: 1rem;
+  }
+  section.skills ul li {
+    width: 80%;
+  }
+  section.timeline h2.timeline-title {
+    margin: 0;
+  }
+  section.timeline ul.timeline-items {
+    max-width: fit-content;
+    transform: scale(0.9);
+  }
 }
